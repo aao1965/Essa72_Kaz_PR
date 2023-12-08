@@ -1,0 +1,7 @@
+"STARTUP.obj",
+"SOSNA_U_PR.obj",
+"IOMODULE.obj",
+"GLOBAL_VAR.obj",
+"BIOS.obj" 
+TO "sosna_u_pr" 
+RAMSIZE(256) 

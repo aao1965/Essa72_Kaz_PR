@@ -1,0 +1,53 @@
+#ifndef __AT89S8253_H__
+#define __AT89S8253_H__
+
+#define SFR(__NAME__,__ADDR__)			sfr __NAME__ = __ADDR__
+#define SFR16(__NAME__,__ADDR__)		sfr16 __NAME__ = __ADDR__
+#define SBIT(__NAME__,__REG__,__POS__)	sbit __NAME__ = __REG__^__POS__
+
+SFR (TCON, 0x88);                      // Timer/Counter Control
+SFR (TMOD, 0x89);                      // Timer/Counter Mode
+SFR (P1, 0x90);                        // Port 1 Latch
+SFR (TL0, 0x8A);                       // Timer/Counter 0 Low
+SFR (TL1, 0x8B);                       // Timer/Counter 1 Low
+SFR (TH0, 0x8C);                       // Timer/Counter 0 High
+SFR (TH1, 0x8D);                       // Timer/Counter 1 High
+SFR (IE, 0xA8);                        // Interrupt Enable
+SFR (IP, 0xB8);                        // Interrupt Priority
+
+#define SFR_TCON     0x88
+#define SFR_P1       0x90
+#define SFR_IE       0xA8
+
+// TCON 0x88
+SBIT (TF1, SFR_TCON, 7);               // Timer 1 Overflow Flag
+SBIT (TR1, SFR_TCON, 6);               // Timer 1 On/Off Control
+SBIT (TF0, SFR_TCON, 5);               // Timer 0 Overflow Flag
+SBIT (TR0, SFR_TCON, 4);               // Timer 0 On/Off Control
+SBIT (IE1, SFR_TCON, 3);               // Ext. Interrupt 1 Edge Flag
+SBIT (IT1, SFR_TCON, 2);               // Ext. Interrupt 1 Type
+SBIT (IE0, SFR_TCON, 1);               // Ext. Interrupt 0 Edge Flag
+SBIT (IT0, SFR_TCON, 0);               // Ext. Interrupt 0 Type
+
+// P1 0x90
+SBIT (P1_7, SFR_P1, 7);
+SBIT (P1_6, SFR_P1, 6);
+SBIT (P1_5, SFR_P1, 5);
+SBIT (P1_4, SFR_P1, 4);
+SBIT (P1_3, SFR_P1, 3);
+SBIT (P1_2, SFR_P1, 2);
+SBIT (P1_1, SFR_P1, 1);
+SBIT (P1_0, SFR_P1, 0);
+
+// IE 0xA8
+SBIT (EA, SFR_IE, 7);                  // Global Interrupt Enable
+SBIT (EC, SFR_IE, 6);                  // Comparator Interrupt Enable
+SBIT (ES, SFR_IE, 4);                  // UART0 Interrupt Enable
+SBIT (ET1, SFR_IE, 3);                 // Timer 1 Interrupt Enable
+SBIT (EX1, SFR_IE, 2);                 // External Interrupt 1 Enable
+SBIT (ET0, SFR_IE, 1);                 // Timer 0 Interrupt Enable
+SBIT (EX0, SFR_IE, 0);                 // External Interrupt 0 Enable
+
+#define INTERRUPT_TIMER0           1   // Timer 0 Overflow
+
+#endif
