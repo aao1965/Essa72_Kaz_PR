@@ -13,6 +13,10 @@
 #include <intrins.h>
 #include <bios.h>
 //
+
+
+//	12_12_2023 !!!
+
 extern enum_sost_syst    sost_sys; // состояния системы
 //
 extern bit fl_mode_tkn_change;
@@ -92,7 +96,7 @@ int count_tas=0;
 int ill=0;
 
 bit fl_count=1;
-//
+// 11_12_2023
 //bit fl_bv_rx=0; // 0- первая посылка 1- вторая посылка
 bit fl_bv_rx=1; // 0- первая посылка 1- вторая посылка
 // переменные для хранения крена
@@ -413,7 +417,7 @@ if (fl_new_bv)// приняты данные от БВ
 */
              }
            fl_new_bv=0;
-//           fl_bv_rx=0; // переход к ожиданию первой посылки
+           fl_bv_rx=0; // переход к ожиданию первой посылки
         }
        else // первая посылка
        {
@@ -427,7 +431,7 @@ if (!(bv_rx[1] & 64)) {_RG_CTRL&=(~_B_DC_BV);} else {_RG_CTRL|=_B_DC_BV;}
 if (bv_rx[1]&_B_F_MODE) {fl_gun=0;} else {fl_gun=1;}
 // записываем информацию для ТАСа
          tas_tx[11]=bv_rx[1];
-         tas_tx[12]=bv_rx[2];
+         tas_tx[12]=bv_rx[2]; 
          tas_tx[13]=bv_rx[3];
 // информация из КАТРИН
 // БУ передает (ретранслирует) в ТАС то,что получил из БВ, а он из Катрин
@@ -446,7 +450,7 @@ if (bv_rx[1]&_B_F_MODE) {fl_gun=0;} else {fl_gun=1;}
        else   // это не первая посылка ждем другую
        {
        fl_new_bv=0;
-//       fl_bv_rx=0;
+       fl_bv_rx=0;
        }
        }// end else
       }
